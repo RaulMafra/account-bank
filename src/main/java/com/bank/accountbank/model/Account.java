@@ -17,9 +17,9 @@ public class Account {
 	@Column(unique = true)
 	private String number;
 	private String agency;
-	@Column(scale = 2, precision = 13)
+	@Column(precision = 13, scale = 2)
 	private BigDecimal balance;
-	@Column(name = "overdraft", scale = 13, precision = 2)//9999999999999(precision), 99(scale)
+	@Column(name = "overdraft", precision = 13, scale = 2)//9999999999999(precision), 99(scale)
 	private BigDecimal limit;
 
 	public Long getId() {
