@@ -17,10 +17,10 @@ public class Account {
 	@Column(unique = true)
 	private String number;
 	private String agency;
-	@Column(scale = 13, precision = 2)
+	@Column(scale = 2, precision = 13)
 	private BigDecimal balance;
-	@Column(name = "overdraft", scale = 13, precision = 2)
-	private BigDecimal limite;
+	@Column(name = "overdraft", scale = 13, precision = 2)//9999999999999(precision), 99(scale)
+	private BigDecimal limit;
 
 	public Long getId() {
 		return id;
@@ -54,12 +54,12 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public BigDecimal getLimite() {
-		return limite;
+	public BigDecimal getLimit() {
+		return limit;
 	}
 
-	public void setLimite(BigDecimal limite) {
-		this.limite = limite;
+	public void setLimit(BigDecimal limit) {
+		this.limit = limit;
 	}
 
 }

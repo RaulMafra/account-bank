@@ -16,7 +16,7 @@ public class Card {
 	private Long id;
 	@Column(unique = true)
 	private String number;
-	@Column(name = "available_limit", scale = 13, precision = 2)
+	@Column(name = "available_limit", scale = 13, precision = 2)//9999999999999(precision), 99(scale)
 	private BigDecimal limit;
 
 	public String getNumber() {
