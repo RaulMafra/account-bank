@@ -1,15 +1,8 @@
 package com.bank.accountbank.model;
 
-import java.util.List;
+import jakarta.persistence.*;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import java.util.List;
 
 @Entity(name = "tb_user")
 public class User {
@@ -17,22 +10,17 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(length = 30, nullable = false)
 	private String name;
 
-	// um usuário tem uma conta
-	// se um usuário for deletado, sua conta também será deletada
+	@JoinColumn(unique = true, nullable = false)
 	@OneToOne(cascade = CascadeType.ALL)
 	private Account account;
-
+	@JoinColumn(unique = true, nullable = false)
 	@OneToOne(cascade = CascadeType.ALL)
 	private Card card;
-
-	// um usuário tem vários features
-	// EAGER -> sempre que buscado um usuário no banco, esse usuário virá
-	// acompanhado de suas features
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Feature> feature;
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<News> news;
 

@@ -14,12 +14,13 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
+	@Column(length = 9, unique = true, nullable = false)
 	private String number;
+	@Column(length = 5, nullable = false)
 	private String agency;
-	@Column(precision = 13, scale = 2)
+	@Column(precision = 13, scale = 2, nullable = false)
 	private BigDecimal balance;
-	@Column(name = "overdraft", precision = 13, scale = 2)//9999999999999(precision), 99(scale)
+	@Column(name = "overdraft", precision = 13, scale = 2, nullable = false)//9999999999999(precision), 99(scale)
 	private BigDecimal limit;
 
 	public Long getId() {
