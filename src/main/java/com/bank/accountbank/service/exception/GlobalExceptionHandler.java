@@ -30,4 +30,9 @@ public class GlobalExceptionHandler {
         logger.error(message, throwable);
         return new ResponseEntity<>(throwable.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(AssertionError.class)
+    public ResponseEntity<String> handleNullableField(AssertionError assertionError){
+        return new ResponseEntity<>(assertionError.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }
